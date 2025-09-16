@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- Swiper.js CSS for testimonials carousel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    
     <!-- Simple animations and custom styles -->
     <style>
         html {
@@ -54,24 +57,28 @@
             transform: rotate(180deg);
         }
 
-        /* Horizontal scrolling marquee for testimonials */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+        /* Swiper custom styles */
+        .swiper-slide {
+            height: auto;
+            display: flex;
         }
-        .animate-marquee {
-            animation: marquee 60s linear infinite;
+        .swiper-slide .card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #2563eb !important;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #2563eb !important;
         }
 
-        /* --- FIX FOR MOBILE --- */
         /* Apply hover effects only on devices that can actually hover (like desktops) */
         @media (hover: hover) {
             .card:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            }
-            .marquee-container:hover .animate-marquee {
-                animation-play-state: paused;
             }
         }
 
@@ -160,7 +167,7 @@
                             Hi, I'm <span class="gradient-text">Emil</span>
                         </h1>
                         <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
-                            Anti-Money Laundering and Compliance Specialist with over 8 years of experience in financial security and crypto compliance. I hold an ICA Certificate in AML, specialize in Forensic Accounting, and have extensive experience supporting VASP registrations across the EU.
+                            Anti-Money Laundering and Compliance Specialist with over 8 years of experience in financial security and crypto compliance. I hold an ICA Certificate in AML, specialize in forensic accounting, and have extensive experience supporting VASP registrations across the EU.
                         </p>
                         <div class="mt-8">
                             <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition-colors duration-300">
@@ -214,94 +221,74 @@
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-24 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title text-3xl md:text-4xl mb-12 animate-on-scroll">What My Clients Say</h2>
-            </div>
-            <div class="marquee-container w-full overflow-hidden relative">
-                 <div class="animate-marquee flex flex-nowrap space-x-8 pb-4">
-                    <!-- Testimonial Set 1 -->
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Deeply knowledgeable in AML and crypto-related compliance. Helped us not only with the documentation but also provided excellent advice on selecting compliance tools. Everything was delivered on time and with outstanding quality."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Amira K.</p>
-                            <p class="text-sm text-gray-500">Head of Compliance</p>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl animate-on-scroll">What My Clients Say</h2>
+                </div>
+                <!-- Swiper -->
+                <div class="swiper mySwiper w-full overflow-hidden relative">
+                    <div class="swiper-wrapper pb-16">
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Deeply knowledgeable in AML and crypto-related compliance. Helped us not only with the documentation but also provided excellent advice on selecting compliance tools. Everything was delivered on time and with outstanding quality."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Amira K.</p>
+                                    <p class="text-sm text-gray-500">Head of Compliance</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Working with Emil was a great experience. He quickly understood the specifics of our business and delivered all the necessary AML documentation tailored to Estonian regulations. With his support, we successfully obtained our VASP license."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Martin L.</p>
+                                    <p class="text-sm text-gray-500">CEO of a Fintech Startup</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"We hired Emil to develop our KYC/AML policies and prepare for an audit. The results exceeded our expectations — precise, professional, and fully aligned with the latest EU requirements. Highly recommended as a trusted compliance expert."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Carlos M.</p>
+                                    <p class="text-sm text-gray-500">COO of a Fintech Company</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to understand and implement effectively."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Jessica S.</p>
+                                    <p class="text-sm text-gray-500">AML Officer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
+                                <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date, and delivered in an engaging way. Our team's compliance knowledge has significantly improved."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">David P.</p>
+                                    <p class="text-sm text-gray-500">Founder, Crypto Wallet Service</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Working with Emil was a great experience. He quickly understood the specifics of our business and delivered all the necessary AML documentation tailored to Estonian regulations. With his support, we successfully obtained our VASP license."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Martin L.</p>
-                            <p class="text-sm text-gray-500">CEO of a fintech startup</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"We hired Emil to develop our KYC/AML policies and prepare for an audit. The results exceeded our expectations — precise, professional, and fully aligned with the latest EU requirements. Highly recommended as a trusted compliance expert."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Carlos M.</p>
-                            <p class="text-sm text-gray-500">COO of a fintech company</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively put into practice."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Jessica S.</p>
-                            <p class="text-sm text-gray-500">AML Officer</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">David P.</p>
-                            <p class="text-sm text-gray-500">Founder, Crypto Wallet Service</p>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate Testimonial Set for seamless loop -->
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Deeply knowledgeable in AML and crypto-related compliance. Helped us not only with the documentation but also provided excellent advice on selecting compliance tools. Everything was delivered on time and with outstanding quality."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Amira K.</p>
-                            <p class="text-sm text-gray-500">Head of Compliance</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Working with Emil was a great experience. He quickly understood the specifics of our business and delivered all the necessary AML documentation tailored to Estonian regulations. With his support, we successfully obtained our VASP license."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Martin L.</p>
-                            <p class="text-sm text-gray-500">CEO of a fintech startup</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"We hired Emil to develop our KYC/AML policies and prepare for an audit. The results exceeded our expectations — precise, professional, and fully aligned with the latest EU requirements. Highly recommended as a trusted compliance expert."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Carlos M.</p>
-                            <p class="text-sm text-gray-500">COO of a fintech company</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively put into practice."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Jessica S.</p>
-                            <p class="text-sm text-gray-500">AML Officer</p>
-                        </div>
-                    </div>
-                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">David P.</p>
-                            <p class="text-sm text-gray-500">Founder, Crypto Wallet Service</p>
-                        </div>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -464,7 +451,7 @@
         <section id="contact" class="py-24 overflow-hidden">
             <div class="container mx-auto px-6 max-w-4xl">
                  <div class="text-center mb-12 animate-on-scroll">
-                    <h2 class="section-title text-3xl md:text-4xl">Get In Touch Now</h2>
+                    <h2 class="section-title text-3xl md:text-4xl">Get In Touch</h2>
                     <p class="mt-4 text-gray-600">Build a strong legal foundation for your crypto project. From setup to scaling — I’ve got your back.</p>
                 </div>
                 <div class="card p-8 md:p-12 animate-on-scroll">
@@ -520,6 +507,8 @@
         <!-- Content will be injected by JS -->
     </div>
 
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
         // Mobile menu toggle
@@ -570,6 +559,34 @@
         });
     </script>
     
+    <!-- Swiper Initialization -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        grabCursor: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+    </script>
+
     <!-- NEW SCRIPT FOR LANGUAGE SUGGESTION -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
