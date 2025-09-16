@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AML та Комплаєнс Консультант для Крипто: Експертні Послуги та Ліцензування</title>
+    <meta name="description" content="AML та комплаєнс-консультант, що спеціалізується на крипто-проєктах. Пропоную AML-політики, KYC/моніторинг, ліцензування VASP (Естонія/ЄС), інструменти комплаєнсу та навчання. Сертифікований ICA з досвідом роботи в східноєвропейських крипто-біржах.">
+    <link rel="shortcut icon" href="assets/images/default.png-1-206x206.png" type="image/x-icon">
+    
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Simple animations and custom styles -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A very light gray background */
+        }
+        .section-title {
+            font-weight: 800;
+            color: #1e293b; /* Dark slate color for titles */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .btn-primary {
+            background-color: #2563eb;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+        /* Style for native accordion (FAQ) */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details .accordion-arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+        details[open] .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Horizontal scrolling marquee for testimonials */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 60s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="text-gray-700 antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="#">
+                    <img src="assets/images/default.png-1-206x206.png" alt="Emil AML Logo" class="h-14 w-14">
+                </a>
+                <a href="#" class="text-xl font-bold text-gray-800">EMIL AML</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center">
+                <div class="space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">Про мене</a>
+                    <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors">Послуги</a>
+                    <a href="#certs" class="text-gray-600 hover:text-blue-600 transition-colors">Сертифікати</a>
+                    <a href="#contact" class="btn-primary text-white font-medium py-2 px-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">Контакти</a>
+                </div>
+                 <!-- Language Switcher -->
+                <div class="flex items-center space-x-4 ml-6 pl-6 border-l border-gray-200">
+                    <a href="index.html" class="text-gray-500 hover:text-blue-600 text-sm">EN</a>
+                    <a href="index-ua.html" class="font-bold text-blue-600 text-sm">UA</a>
+                    <a href="index-de.html" class="text-gray-500 hover:text-blue-600 text-sm">DE</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">Про мене</a>
+            <a href="#services" class="block py-2 text-gray-600 hover:text-blue-600">Послуги</a>
+            <a href="#certs" class="block py-2 text-gray-600 hover:text-blue-600">Сертифікати</a>
+             <!-- Language Switcher Mobile -->
+            <div class="flex items-center space-x-4 mt-4 pt-4 border-t border-gray-200">
+                <span class="text-sm text-gray-500">Мова:</span>
+                <a href="index.html" class="text-gray-500 hover:text-blue-600 text-sm">EN</a>
+                <a href="index-ua.html" class="font-bold text-blue-600 text-sm">UA</a>
+                <a href="index-de.html" class="text-gray-500 hover:text-blue-600 text-sm">DE</a>
+            </div>
+            <a href="#contact" class="block mt-4 text-center btn-primary text-white font-medium py-2 px-5 rounded-lg shadow-md">Контакти</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                            Привіт, я <span class="gradient-text">Еміль</span>
+                        </h1>
+                        <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
+                            Спеціаліст з протидії відмиванню грошей (AML) та комплаєнсу з 8+ роками досвіду у фінансовій безпеці та крипто-комплаєнсі. Я маю сертифікат ICA з AML, спеціалізуюся на форензік-акаунтингу та маю великий досвід у підтримці реєстрації VASP по всьому ЄС.
+                        </p>
+                        <div class="mt-8">
+                            <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-shadow">
+                                Зв'язатися
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <img src="assets/images/photo-2024-07-05-12-09-46.jpg-947x954.jpg" alt="Emil, AML & Crypto Compliance Consultant" class="rounded-2xl shadow-2xl w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="section-title text-3xl md:text-4xl">Експерт з крипто-комплаєнсу</h2>
+                        <p class="mt-4 text-gray-600">Я допомагав стартапам і крипто-біржам впроваджувати надійні системи комплаєнсу, готуватися до аудитів і відповідати постійно мінливим регуляціям.</p>
+                        <p class="mt-4 text-gray-600">Маючи практичний досвід у складних регуляторних середовищах, я допомагаю компаніям виявляти та мінімізувати потенційні ризики до того, як вони стануть критичними. Незалежно від того, чи запускаєте ви нову платформу, чи виходите на нові ринки, я забезпечую безперебійну та стійку інтеграцію комплаєнс-стратегій у бізнес-процеси.</p>
+                        <p class="mt-4 text-gray-600">Крім технічної експертизи, я роблю акцент на чіткій комунікації та постійному навчанні. Я надаю клієнтам детальні інструкції, навчальні матеріали з комплаєнсу та оновлення щодо регуляторних змін.</p>
+                    </div>
+                     <div class="order-1 lg:order-2 flex justify-center">
+                        <img src="assets/images/57840.jpg-1036x1181.jpg" alt="Crypto Compliance Frameworks" class="rounded-2xl shadow-xl w-full max-w-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metrics Section -->
+        <section id="metrics" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="card p-8">
+                        <p class="text-6xl font-extrabold gradient-text">35+</p>
+                        <p class="mt-2 text-lg font-medium text-gray-600">Проєктів завершено</p>
+                    </div>
+                    <div class="card p-8">
+                        <p class="text-6xl font-extrabold gradient-text">20+</p>
+                        <p class="mt-2 text-lg font-medium text-gray-600">Задоволених клієнтів</p>
+                    </div>
+                    <div class="card p-8">
+                        <p class="text-6xl font-extrabold gradient-text">8+</p>
+                        <p class="mt-2 text-lg font-medium text-gray-600">Років досвіду</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title text-3xl md:text-4xl mb-12">Що кажуть мої клієнти</h2>
+            </div>
+            <div class="marquee-container w-full overflow-hidden relative">
+                 <div class="animate-marquee flex flex-nowrap space-x-8 pb-4">
+                    <!-- Testimonial Set 1 -->
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Глибокі знання в AML та комплаєнсі, пов'язаному з криптовалютами. Допоміг нам не тільки з документацією, але й надав відмінні поради щодо вибору інструментів комплаєнсу. Все було виконано вчасно та з видатною якістю."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Аміра К.</p>
+                            <p class="text-sm text-gray-500">Керівник відділу комплаєнсу</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Робота з Емілем була чудовим досвідом. Він швидко зрозумів специфіку нашого бізнесу та надав всю необхідну AML-документацію, адаптовану до естонських норм. З його підтримкою ми успішно отримали ліцензію VASP."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Мартін Л.</p>
+                            <p class="text-sm text-gray-500">CEO фінтех-стартапу</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Ми найняли Еміля для розробки наших політик KYC/AML та підготовки до аудиту. Результати перевершили наші очікування — точно, професійно та повністю відповідно до останніх вимог ЄС. Настійно рекомендуємо як надійного експерта з комплаєнсу."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Карлос М.</p>
+                            <p class="text-sm text-gray-500">COO фінтех-компанії</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Поради Еміля щодо впровадження моніторингу транзакцій були безцінними. Його практичний підхід і чіткі пояснення зробили складну тему легкою для розуміння та ефективного впровадження нашою командою."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Джессіка С.</p>
+                            <p class="text-sm text-gray-500">AML-офіцер</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
+                        <p class="text-gray-600 flex-grow">"Навчальні матеріали, які Еміль створив для нашої команди, були на найвищому рівні. Вони були вичерпними, актуальними та представлені у захоплюючій формі. Наші знання в галузі комплаєнсу значно покращилися."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Давид П.</p>
+                            <p class="text-sm text-gray-500">Засновник, сервіс крипто-гаманців</p>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate Testimonial Set for seamless loop -->
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Глибокі знання в AML та комплаєнсі, пов'язаному з криптовалютами. Допоміг нам не тільки з документацією, але й надав відмінні поради щодо вибору інструментів комплаєнсу. Все було виконано вчасно та з видатною якістю."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Аміра К.</p>
+                            <p class="text-sm text-gray-500">Керівник відділу комплаєнсу</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Робота з Емілем була чудовим досвідом. Він швидко зрозумів специфіку нашого бізнесу та надав всю необхідну AML-документацію, адаптовану до естонських норм. З його підтримкою ми успішно отримали ліцензію VASP."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Мартін Л.</p>
+                            <p class="text-sm text-gray-500">CEO фінтех-стартапу</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Ми найняли Еміля для розробки наших політик KYC/AML та підготовки до аудиту. Результати перевершили наші очікування — точно, професійно та повністю відповідно до останніх вимог ЄС. Настійно рекомендуємо як надійного експерта з комплаєнсу."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Карлос М.</p>
+                            <p class="text-sm text-gray-500">COO фінтех-компанії</p>
+                        </div>
+                    </div>
+                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                        <p class="text-gray-600 flex-grow">"Поради Еміля щодо впровадження моніторингу транзакцій були безцінними. Його практичний підхід і чіткі пояснення зробили складну тему легкою для розуміння та ефективного впровадження нашою командою."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Джессіка С.</p>
+                            <p class="text-sm text-gray-500">AML-офіцер</p>
+                        </div>
+                    </div>
+                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
+                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
+                        <p class="text-gray-600 flex-grow">"Навчальні матеріали, які Еміль створив для нашої команди, були на найвищому рівні. Вони були вичерпними, актуальними та представлені у захоплюючій формі. Наші знання в галузі комплаєнсу значно покращилися."</p>
+                        <div class="mt-6 text-center">
+                            <p class="font-bold text-gray-900">Давид П.</p>
+                            <p class="text-sm text-gray-500">Засновник, сервіс крипто-гаманців</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-3xl md:text-4xl text-center mb-12">З ким я працював</h2>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <img src="assets/images/amlbot-logo.jpeg-200x200.jpg" alt="amlbot logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <img src="assets/images/af38a337-ac96-4b2f-ac32-a40370d3d360.png-2-512x512.png" alt="scorchain logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <img src="assets/images/crystal-logo-1.jpg-409x409.jpg" alt="crystal aml logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <img src="assets/images/sumsub-logo.jpeg-200x200.jpg" alt="sumsub logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <img src="assets/images/ciphertrace-white-circle-strategic-partner-logo3x.png-409x406.png" alt="Ciphertrace logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <img src="assets/images/images.png-225x225.png" alt="Coinfirm logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-3xl md:text-4xl">Мої послуги</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/10075638.jpg-600x600.jpg" alt="AML/CTF Policies" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">AML/CTF-політики та оцінка ризиків</h3>
+                            <p class="mt-2 text-gray-600">Розробка індивідуальних AML-програм, ризик-орієнтованого підходу та моделей оцінки ризиків клієнтів.</p>
+                        </div>
+                    </div>
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/6137729.jpg-600x600.jpg" alt="VASP Registration" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">Реєстрація та ліцензування VASP</h3>
+                            <p class="mt-2 text-gray-600">Допомога в процесі реєстрації в ЄС та комунікації з регуляторами.</p>
+                        </div>
+                    </div>
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/2210.i201.027.s.m004.c13.contract-agreement-isometric.jpg-600x600.jpg" alt="KYC & Transaction Monitoring" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">KYC та моніторинг транзакцій</h3>
+                            <p class="mt-2 text-gray-600">Проектування процесів онбордингу, сценаріїв "червоних прапорців" та процедур постійного моніторингу.</p>
+                        </div>
+                    </div>
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/20943451-1.jpg-1200x1200.jpg" alt="Compliance Tools Advisory" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">Консультації щодо інструментів комплаєнсу</h3>
+                            <p class="mt-2 text-gray-600">Вибір та налаштування ефективних інструментів для автоматизації AML та управління справами.</p>
+                        </div>
+                    </div>
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/20944720-1.jpg-1200x1200.jpg" alt="Training Materials" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">Навчання для AML-офіцерів</h3>
+                            <p class="mt-2 text-gray-600">Створення онбордингових та операційних посібників для внутрішніх комплаєнс-команд.</p>
+                        </div>
+                    </div>
+                    <!-- Service Card -->
+                    <div class="card overflow-hidden">
+                        <img src="assets/images/20943599-1.jpg-600x600.jpg" alt="Audit Preparation" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-gray-900">Підготовка до аудиту та перевірок</h3>
+                            <p class="mt-2 text-gray-600">Повна підтримка з документацією, внутрішніми перевірками та відповідями на запити регуляторів.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certs" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-3xl md:text-4xl">Освіта та сертифікати</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 justify-center items-start">
+                    <div class="card p-6 text-center">
+                        <img src="assets/images/ica-certificate-in-aml-1.png-1-646x914.png" alt="ICA Certificate in Anti-Money Laundering" class="w-full max-w-sm mx-auto rounded-lg shadow-md">
+                        <h3 class="mt-6 font-bold text-xl text-gray-900">Сертифікат ICA з протидії відмиванню грошей</h3>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <img src="assets/images/certificate-landing-pagepleb767wgfq8.jpeg-1-646x338.jpeg" alt="Forensic Accounting and Fraud Examination Certificate" class="w-full max-w-sm mx-auto rounded-lg shadow-md">
+                        <h3 class="mt-6 font-bold text-xl text-gray-900">Форензік-акаунтинг та розслідування шахрайства</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="section-title text-3xl md:text-4xl">Ключові питання</h2>
+                </div>
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <details class="card p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
+                            Як оцінити ризики?
+                            <span class="accordion-arrow text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Почніть з комплексного ризик-орієнтованого підходу: визначте типи клієнтів, географію, послуги та моделі транзакцій. Потім оцініть їхні ризики відмивання грошей та фінансування тероризму. Я можу допомогти вам створити індивідуальну матрицю оцінки ризиків, що відповідає рекомендаціям ЄС та FATF.</p>
+                    </details>
+                     <!-- FAQ Item 2 -->
+                    <details class="card p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
+                            Що щодо KYC?
+                             <span class="accordion-arrow text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">"Знай свого клієнта" (KYC) — це ваша перша лінія захисту. Вам потрібен надійний процес ідентифікації, верифікації та постійної перевірки клієнтів. Я допомагаю налаштувати ефективні KYC-процеси, вибрати відповідних провайдерів та забезпечити дотримання нормативних вимог.</p>
+                    </details>
+                     <!-- FAQ Item 3 -->
+                    <details class="card p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
+                            Потрібна ліцензія VASP?
+                             <span class="accordion-arrow text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Якщо ви керуєте крипто-біржею або сервісом гаманців в Естонії (або ЄС), реєстрація VASP є обов'язковою. Я проведу вас крок за кроком через процес ліцензування, від документації до спілкування з регуляторами, забезпечуючи плавний та відповідний запуск.</p>
+                    </details>
+                     <!-- FAQ Item 4 -->
+                    <details class="card p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
+                            Які інструменти використовувати?
+                             <span class="accordion-arrow text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Від рішень для верифікації особи (таких як Sumsub або Veriff) до платформ для моніторингу транзакцій (таких як Chainalysis, Crystal або ComplyAdvantage), я допоможу вам вибрати та впровадити правильний набір технологій залежно від вашого рівня ризику, бюджету та регуляторних потреб.</p>
+                    </details>
+                     <!-- FAQ Item 5 -->
+                    <details class="card p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
+                            Хочете пройти навчання з AML?
+                             <span class="accordion-arrow text-blue-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Незалежно від того, чи ви вводите в курс справи нового AML-офіцера, чи навчаєте свою внутрішню команду, я можу надати індивідуальні навчальні матеріали, розбір політик та практичні кейси, щоб ваші співробітники були впевнені та готові до аудиту.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                 <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl">Зв'яжіться зараз</h2>
+                    <p class="mt-4 text-gray-600">Створіть міцну правову основу для вашого крипто-проєкту. Від налаштування до масштабування — я вас підтримаю.</p>
+                </div>
+                <div class="card p-8 md:p-12">
+                     <form action="" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ім'я</label>
+                                <input type="text" name="name" id="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Повідомлення</label>
+                            <textarea name="message" id="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-shadow">
+                                Надіслати повідомлення
+                            </button>
+                        </div>
+                     </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                 <div class="text-center md:text-left mb-4 md:mb-0">
+                    <p class="text-lg font-bold">EMIL AML</p>
+                    <p class="text-gray-400">Ваш партнер з крипто-комплаєнсу</p>
+                </div>
+                <div class="flex justify-center space-x-4 mb-4 md:mb-0">
+                    <a href="https://www.linkedin.com/in/emillong/" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                    </a>
+                </div>
+                 <div class="text-center md:text-right">
+                     <p class="text-gray-400 text-sm">&copy; 2025 Усі права захищено.</p>
+                 </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!link.href.includes('index-')) { // Don't close for language links
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
