@@ -39,17 +39,7 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
-        .btn-primary {
-            background-color: #2563eb;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-        }
+        
         /* Style for native accordion (FAQ) */
         details > summary {
             list-style: none;
@@ -72,8 +62,44 @@
         .animate-marquee {
             animation: marquee 60s linear infinite;
         }
-        .marquee-container:hover .animate-marquee {
-            animation-play-state: paused;
+
+        /* --- FIX FOR MOBILE --- */
+        /* Apply hover effects only on devices that can actually hover (like desktops) */
+        @media (hover: hover) {
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            }
+            .marquee-container:hover .animate-marquee {
+                animation-play-state: paused;
+            }
+        }
+
+        /* NEW STYLES FOR SCROLL ANIMATIONS */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform; /* Performance hint for browser */
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered animation for grid/flex children */
+        .stagger-children > * {
+            transition-delay: var(--stagger-delay, 0s);
+        }
+        
+        /* Language Suggestion Banner */
+        #lang-suggestion-banner {
+            transform: translateY(120%);
+            transition: transform 0.5s ease-in-out;
+        }
+        #lang-suggestion-banner.show {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -95,10 +121,10 @@
             <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center">
                 <div class="space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors">About</a>
-                    <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors">Services</a>
-                    <a href="#certs" class="text-gray-600 hover:text-blue-600 transition-colors">Certs</a>
-                    <a href="#contact" class="btn-primary text-white font-medium py-2 px-5 rounded-lg shadow-md hover:shadow-lg transition-shadow">Contact</a>
+                    <a href="#about" class="font-medium text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#services" class="font-medium text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#certs" class="font-medium text-gray-700 hover:text-blue-600 transition-colors">Certs</a>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-colors duration-300">Contact</a>
                 </div>
                  <!-- Language Switcher -->
                 <div class="flex items-center space-x-4 ml-6 pl-6 border-l border-gray-200">
@@ -120,29 +146,29 @@
                 <a href="index-ua.html" class="text-gray-500 hover:text-blue-600 text-sm">UA</a>
                 <a href="index-de.html" class="text-gray-500 hover:text-blue-600 text-sm">DE</a>
             </div>
-            <a href="#contact" class="block mt-4 text-center btn-primary text-white font-medium py-2 px-5 rounded-lg shadow-md">Contact</a>
+            <a href="#contact" class="block mt-4 text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-5 rounded-lg shadow-md transition-colors duration-300">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="py-20 md:py-32">
+        <section id="home" class="py-20 md:py-32 overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-center lg:text-left">
+                    <div class="text-center lg:text-left animate-on-scroll">
                         <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
                             Hi, I'm <span class="gradient-text">Emil</span>
                         </h1>
                         <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0">
-                            Anti-Money Laundering and Compliance Specialist with 8+ years of experience in financial security and crypto compliance. I hold an ICA Certificate in AML, specialize in Forensic Accounting, and have extensive experience supporting VASP registration processes across the EU.
+                            Anti-Money Laundering and Compliance Specialist with over 8 years of experience in financial security and crypto compliance. I hold an ICA Certificate in AML, specialize in Forensic Accounting, and have extensive experience supporting VASP registrations across the EU.
                         </p>
                         <div class="mt-8">
-                            <a href="#contact" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-shadow">
-                                Get in Touch
+                            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition-colors duration-300">
+                                Get In Touch
                             </a>
                         </div>
                     </div>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center animate-on-scroll">
                         <img src="assets/images/photo-2024-07-05-12-09-46.jpg-947x954.jpg" alt="Emil, AML & Crypto Compliance Consultant" class="rounded-2xl shadow-2xl w-full max-w-md">
                     </div>
                 </div>
@@ -150,16 +176,16 @@
         </section>
 
         <!-- About Me Section -->
-        <section id="about" class="py-24 bg-white">
+        <section id="about" class="py-24 bg-white overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="order-2 lg:order-1">
+                    <div class="order-2 lg:order-1 animate-on-scroll">
                         <h2 class="section-title text-3xl md:text-4xl">Crypto Compliance Expert</h2>
                         <p class="mt-4 text-gray-600">I’ve helped startups and crypto exchanges implement robust compliance frameworks, prepare for audits, and stay up-to-date with constantly evolving regulations.</p>
                         <p class="mt-4 text-gray-600">With hands-on experience in navigating complex regulatory landscapes, I assist companies in identifying and mitigating potential risks before they become critical issues. Whether launching a new platform or expanding into new markets, I ensure that compliance strategies are integrated into business operations seamlessly and sustainably.</p>
-                        <p class="mt-4 text-gray-600">Beyond technical expertise, I emphasize clear communication and ongoing education. I provide clients with detailed guidance, compliance training materials, and updates on regulatory changes to empower their teams.</p>
+                        <p class="mt-4 text-gray-600">Beyond technical expertise, I emphasize clear communication and ongoing education. I provide clients with detailed guidance, compliance training materials, and updates on regulatory changes.</p>
                     </div>
-                     <div class="order-1 lg:order-2 flex justify-center">
+                     <div class="order-1 lg:order-2 flex justify-center animate-on-scroll">
                         <img src="assets/images/57840.jpg-1036x1181.jpg" alt="Crypto Compliance Frameworks" class="rounded-2xl shadow-xl w-full max-w-md">
                     </div>
                 </div>
@@ -167,18 +193,18 @@
         </section>
 
         <!-- Metrics Section -->
-        <section id="metrics" class="py-20">
+        <section id="metrics" class="py-20 overflow-hidden">
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="card p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center stagger-children">
+                    <div class="card p-8 animate-on-scroll">
                         <p class="text-6xl font-extrabold gradient-text">35+</p>
                         <p class="mt-2 text-lg font-medium text-gray-600">Projects Completed</p>
                     </div>
-                    <div class="card p-8">
+                    <div class="card p-8 animate-on-scroll">
                         <p class="text-6xl font-extrabold gradient-text">20+</p>
                         <p class="mt-2 text-lg font-medium text-gray-600">Happy Clients</p>
                     </div>
-                    <div class="card p-8">
+                    <div class="card p-8 animate-on-scroll">
                         <p class="text-6xl font-extrabold gradient-text">8+</p>
                         <p class="mt-2 text-lg font-medium text-gray-600">Years of Experience</p>
                     </div>
@@ -189,7 +215,7 @@
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-24 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title text-3xl md:text-4xl mb-12">What My Clients Say</h2>
+                <h2 class="section-title text-3xl md:text-4xl mb-12 animate-on-scroll">What My Clients Say</h2>
             </div>
             <div class="marquee-container w-full overflow-hidden relative">
                  <div class="animate-marquee flex flex-nowrap space-x-8 pb-4">
@@ -220,7 +246,7 @@
                     </div>
                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
                         <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively implement."</p>
+                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively put into practice."</p>
                         <div class="mt-6 text-center">
                             <p class="font-bold text-gray-900">Jessica S.</p>
                             <p class="text-sm text-gray-500">AML Officer</p>
@@ -228,7 +254,7 @@
                     </div>
                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
                         <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date with regulations, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
+                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
                         <div class="mt-6 text-center">
                             <p class="font-bold text-gray-900">David P.</p>
                             <p class="text-sm text-gray-500">Founder, Crypto Wallet Service</p>
@@ -262,7 +288,7 @@
                     </div>
                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
                         <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively implement."</p>
+                        <p class="text-gray-600 flex-grow">"Emil's guidance on implementing transaction monitoring was invaluable. His practical approach and clear explanations made a complex subject easy for our team to grasp and effectively put into practice."</p>
                         <div class="mt-6 text-center">
                             <p class="font-bold text-gray-900">Jessica S.</p>
                             <p class="text-sm text-gray-500">AML Officer</p>
@@ -270,7 +296,7 @@
                     </div>
                      <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
                         <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date with regulations, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
+                        <p class="text-gray-600 flex-grow">"The training materials Emil created for our team were top-notch. They were comprehensive, up-to-date, and presented in an engaging way. Our compliance knowledge has significantly improved."</p>
                         <div class="mt-6 text-center">
                             <p class="font-bold text-gray-900">David P.</p>
                             <p class="text-sm text-gray-500">Founder, Crypto Wallet Service</p>
@@ -281,8 +307,8 @@
         </section>
 
         <!-- Partners Section -->
-        <section id="partners" class="py-20">
-            <div class="container mx-auto px-6">
+        <section id="partners" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6 animate-on-scroll">
                 <h2 class="section-title text-3xl md:text-4xl text-center mb-12">Who I've Worked With</h2>
                 <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
                     <img src="assets/images/amlbot-logo.jpeg-200x200.jpg" alt="amlbot logo" class="h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
@@ -296,14 +322,14 @@
         </section>
         
         <!-- Services Section -->
-        <section id="services" class="py-24 bg-white">
+        <section id="services" class="py-24 bg-white overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="section-title text-3xl md:text-4xl">Services I Offer</h2>
+                    <h2 class="section-title text-3xl md:text-4xl animate-on-scroll">Services I Offer</h2>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/10075638.jpg-600x600.jpg" alt="AML/CTF Policies" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">AML/CTF Policies & Risk Assessment</h3>
@@ -311,7 +337,7 @@
                         </div>
                     </div>
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/6137729.jpg-600x600.jpg" alt="VASP Registration" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">VASP Registration & Licensing</h3>
@@ -319,7 +345,7 @@
                         </div>
                     </div>
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/2210.i201.027.s.m004.c13.contract-agreement-isometric.jpg-600x600.jpg" alt="KYC & Transaction Monitoring" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">KYC & Transaction Monitoring</h3>
@@ -327,7 +353,7 @@
                         </div>
                     </div>
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/20943451-1.jpg-1200x1200.jpg" alt="Compliance Tools Advisory" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">Compliance Tools Advisory</h3>
@@ -335,7 +361,7 @@
                         </div>
                     </div>
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/20944720-1.jpg-1200x1200.jpg" alt="Training Materials" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">Training for AML Officers</h3>
@@ -343,7 +369,7 @@
                         </div>
                     </div>
                     <!-- Service Card -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden animate-on-scroll">
                         <img src="assets/images/20943599-1.jpg-600x600.jpg" alt="Audit Preparation" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="font-bold text-xl text-gray-900">Audit & Inspection Preparation</h3>
@@ -355,17 +381,17 @@
         </section>
 
         <!-- Certifications Section -->
-        <section id="certs" class="py-24">
+        <section id="certs" class="py-24 overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="section-title text-3xl md:text-4xl">Education & Certifications</h2>
+                    <h2 class="section-title text-3xl md:text-4xl animate-on-scroll">Education & Certifications</h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-12 justify-center items-start">
-                    <div class="card p-6 text-center">
+                <div class="grid md:grid-cols-2 gap-12 justify-center items-start stagger-children">
+                    <div class="card p-6 text-center animate-on-scroll">
                         <img src="assets/images/ica-certificate-in-aml-1.png-1-646x914.png" alt="ICA Certificate in Anti-Money Laundering" class="w-full max-w-sm mx-auto rounded-lg shadow-md">
                         <h3 class="mt-6 font-bold text-xl text-gray-900">ICA Certificate in Anti-Money Laundering</h3>
                     </div>
-                    <div class="card p-6 text-center">
+                    <div class="card p-6 text-center animate-on-scroll">
                         <img src="assets/images/certificate-landing-pagepleb767wgfq8.jpeg-1-646x338.jpeg" alt="Forensic Accounting and Fraud Examination Certificate" class="w-full max-w-sm mx-auto rounded-lg shadow-md">
                         <h3 class="mt-6 font-bold text-xl text-gray-900">Forensic Accounting and Fraud Examination</h3>
                     </div>
@@ -374,14 +400,14 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-24 bg-white">
+        <section id="faq" class="py-24 bg-white overflow-hidden">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-16">
-                    <h2 class="section-title text-3xl md:text-4xl">Key Questions</h2>
+                    <h2 class="section-title text-3xl md:text-4xl animate-on-scroll">Key Questions</h2>
                 </div>
-                <div class="space-y-4">
+                <div class="space-y-4 stagger-children">
                     <!-- FAQ Item 1 -->
-                    <details class="card p-6 cursor-pointer">
+                    <details class="card p-6 cursor-pointer animate-on-scroll">
                         <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
                             How to assess risk?
                             <span class="accordion-arrow text-blue-600">
@@ -391,7 +417,7 @@
                         <p class="mt-4 text-gray-600">Start with a comprehensive risk-based approach: identify customer types, geographies, services, and transaction patterns. Then evaluate their money laundering and terrorist financing risks. I can help you build a tailored risk assessment matrix aligned with EU and FATF guidelines.</p>
                     </details>
                      <!-- FAQ Item 2 -->
-                    <details class="card p-6 cursor-pointer">
+                    <details class="card p-6 cursor-pointer animate-on-scroll">
                         <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
                             What about KYC?
                              <span class="accordion-arrow text-blue-600">
@@ -401,7 +427,7 @@
                         <p class="mt-4 text-gray-600">Know Your Customer (KYC) is your first line of defense. You need a reliable process for customer identification, verification, and ongoing due diligence. I assist in setting up effective KYC workflows, selecting suitable providers, and ensuring regulatory compliance.</p>
                     </details>
                      <!-- FAQ Item 3 -->
-                    <details class="card p-6 cursor-pointer">
+                    <details class="card p-6 cursor-pointer animate-on-scroll">
                         <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
                             Need a VASP license?
                              <span class="accordion-arrow text-blue-600">
@@ -411,7 +437,7 @@
                         <p class="mt-4 text-gray-600">If you're operating a crypto exchange or wallet service in Estonia (or the EU), a VASP registration is mandatory. I’ll guide you through the step-by-step licensing process, from documentation to communication with regulators — ensuring a smooth and compliant launch.</p>
                     </details>
                      <!-- FAQ Item 4 -->
-                    <details class="card p-6 cursor-pointer">
+                    <details class="card p-6 cursor-pointer animate-on-scroll">
                         <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
                             What tools to use?
                              <span class="accordion-arrow text-blue-600">
@@ -421,7 +447,7 @@
                         <p class="mt-4 text-gray-600">From ID verification solutions (like Sumsub or Veriff) to transaction monitoring platforms (like Chainalysis, Crystal, or ComplyAdvantage), I help you choose and implement the right tech stack based on your risk level, budget, and regulatory needs.</p>
                     </details>
                      <!-- FAQ Item 5 -->
-                    <details class="card p-6 cursor-pointer">
+                    <details class="card p-6 cursor-pointer animate-on-scroll">
                         <summary class="flex justify-between items-center font-bold text-lg text-gray-900">
                             Want AML training?
                              <span class="accordion-arrow text-blue-600">
@@ -435,13 +461,13 @@
         </section>
         
         <!-- Contact Section -->
-        <section id="contact" class="py-24">
+        <section id="contact" class="py-24 overflow-hidden">
             <div class="container mx-auto px-6 max-w-4xl">
-                 <div class="text-center mb-12">
+                 <div class="text-center mb-12 animate-on-scroll">
                     <h2 class="section-title text-3xl md:text-4xl">Get In Touch Now</h2>
                     <p class="mt-4 text-gray-600">Build a strong legal foundation for your crypto project. From setup to scaling — I’ve got your back.</p>
                 </div>
-                <div class="card p-8 md:p-12">
+                <div class="card p-8 md:p-12 animate-on-scroll">
                      <form action="https://formspree.io/f/myzdqkyg" method="POST" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -458,7 +484,7 @@
                             <textarea name="message" id="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-shadow">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg transition-colors duration-300">
                                 Send Message
                             </button>
                         </div>
@@ -488,6 +514,12 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Language Suggestion Banner -->
+    <div id="lang-suggestion-banner" class="hidden fixed bottom-5 right-5 bg-white p-5 rounded-lg shadow-2xl z-50 text-center sm:text-left">
+        <!-- Content will be injected by JS -->
+    </div>
+
 
     <script>
         // Mobile menu toggle
@@ -506,6 +538,110 @@
                     mobileMenu.classList.add('hidden');
                 }
             });
+        });
+    </script>
+
+    <!-- NEW SCRIPT FOR SCROLL ANIMATIONS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Animation triggers when 10% of the element is visible
+            });
+    
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+    
+            // Apply staggered delays to children of elements with 'stagger-children' class
+            const staggerContainers = document.querySelectorAll('.stagger-children');
+            staggerContainers.forEach(container => {
+                const children = Array.from(container.querySelectorAll('.animate-on-scroll'));
+                for (let i = 0; i < children.length; i++) {
+                    children[i].style.setProperty('--stagger-delay', `${i * 120}ms`);
+                }
+            });
+        });
+    </script>
+    
+    <!-- NEW SCRIPT FOR LANGUAGE SUGGESTION -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the user has already dismissed the banner in this session
+            if (sessionStorage.getItem('languageSuggestionDismissed')) {
+                return;
+            }
+
+            const userLang = navigator.language.slice(0, 2);
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            const suggestions = {
+                'de': {
+                    url: 'index-de.html',
+                    message: 'Möchten Sie zur deutschen Version wechseln?',
+                    switchText: 'Wechseln',
+                    stayText: 'Bleiben'
+                },
+                'uk': {
+                    url: 'index-ua.html',
+                    message: 'Бажаєте перейти на українську версію?',
+                    switchText: 'Перейти',
+                    stayText: 'Залишитися'
+                },
+                'en': {
+                    url: 'index.html',
+                    message: 'Would you like to switch to the English version?',
+                    switchText: 'Switch',
+                    stayText: 'Stay'
+                }
+            };
+
+            let suggestionKey = null;
+
+            if (userLang === 'de' && currentPage !== 'index-de.html') {
+                suggestionKey = 'de';
+            } else if (userLang === 'uk' && currentPage !== 'index-ua.html') {
+                suggestionKey = 'uk';
+            } else if (userLang === 'en' && (currentPage === 'index-de.html' || currentPage === 'index-ua.html')) {
+                suggestionKey = 'en';
+            }
+
+            if (suggestionKey) {
+                const suggestion = suggestions[suggestionKey];
+                const banner = document.getElementById('lang-suggestion-banner');
+                if (banner) {
+                    banner.innerHTML = `
+                        <div class="flex flex-col sm:flex-row items-center justify-center">
+                            <p class="mr-0 sm:mr-4 text-gray-800 mb-3 sm:mb-0">${suggestion.message}</p>
+                            <div class="flex-shrink-0">
+                                <a href="${suggestion.url}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-sm mr-2 transition-colors duration-300">${suggestion.switchText}</a>
+                                <button id="stay-button" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg text-sm transition-colors duration-300">${suggestion.stayText}</button>
+                            </div>
+                        </div>
+                    `;
+                    banner.classList.remove('hidden');
+                    
+                    // To trigger the animation
+                    setTimeout(() => {
+                         banner.classList.add('show');
+                    }, 100);
+
+                    const stayButton = document.getElementById('stay-button');
+                    stayButton.addEventListener('click', () => {
+                        sessionStorage.setItem('languageSuggestionDismissed', 'true');
+                        banner.classList.remove('show');
+                        setTimeout(() => {
+                            banner.style.display = 'none';
+                        }, 500);
+                    });
+                }
+            }
         });
     </script>
 </body>
