@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- Swiper.js CSS for testimonials carousel -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    
     <!-- Simple animations and custom styles -->
     <style>
         html {
@@ -54,24 +57,28 @@
             transform: rotate(180deg);
         }
 
-        /* Horizontal scrolling marquee for testimonials */
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+        /* Swiper custom styles */
+        .swiper-slide {
+            height: auto;
+            display: flex;
         }
-        .animate-marquee {
-            animation: marquee 60s linear infinite;
+        .swiper-slide .card {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #2563eb !important;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: #2563eb !important;
         }
 
-        /* --- FIX FOR MOBILE --- */
         /* Apply hover effects only on devices that can actually hover (like desktops) */
         @media (hover: hover) {
             .card:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            }
-            .marquee-container:hover .animate-marquee {
-                animation-play-state: paused;
             }
         }
 
@@ -214,94 +221,74 @@
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="py-24 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title text-3xl md:text-4xl mb-12 animate-on-scroll">Що кажуть мої клієнти</h2>
-            </div>
-            <div class="marquee-container w-full overflow-hidden relative">
-                 <div class="animate-marquee flex flex-nowrap space-x-8 pb-4">
-                    <!-- Testimonial Set 1 -->
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Глибокі знання в AML та комплаєнсі, пов'язаному з криптовалютами. Допоміг нам не тільки з документацією, але й надав відмінні поради щодо вибору комплаєнс-інструментів. Все було виконано вчасно та з видатною якістю."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Аміра К.</p>
-                            <p class="text-sm text-gray-500">Керівник відділу комплаєнсу</p>
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="section-title text-3xl md:text-4xl animate-on-scroll">Що кажуть мої клієнти</h2>
+                </div>
+                <!-- Swiper -->
+                <div class="swiper mySwiper w-full overflow-hidden relative">
+                    <div class="swiper-wrapper pb-16">
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Глибокі знання в AML та комплаєнсі, пов'язаному з криптовалютами. Допоміг нам не тільки з документацією, але й надав відмінні поради щодо вибору комплаєнс-інструментів. Все було виконано вчасно та з видатною якістю."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Аміра К.</p>
+                                    <p class="text-sm text-gray-500">Керівник відділу комплаєнсу</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Робота з Емілем була чудовим досвідом. Він швидко зрозумів специфіку нашого бізнесу і надав всю необхідну AML-документацію, адаптовану до естонських регуляцій. З його підтримкою ми успішно отримали ліцензію VASP."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Мартін Л.</p>
+                                    <p class="text-sm text-gray-500">CEO фінтех-стартапу</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Ми найняли Еміля для розробки наших політик KYC/AML та підготовки до аудиту. Результати перевершили наші очікування — точно, професійно та повністю відповідно до останніх вимог ЄС. Дуже рекомендуємо як надійного експерта з комплаєнсу."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Карлос М.</p>
+                                    <p class="text-sm text-gray-500">COO фінтех-компанії</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
+                                <p class="text-gray-600 flex-grow">"Поради Еміля щодо впровадження моніторингу транзакцій були неоціненними. Його практичний підхід і чіткі пояснення зробили складну тему легкою для розуміння та ефективного впровадження нашою командою."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Джессіка С.</p>
+                                    <p class="text-sm text-gray-500">AML-офіцер</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial Slide -->
+                        <div class="swiper-slide">
+                            <div class="card p-8 text-left">
+                                <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
+                                <p class="text-gray-600 flex-grow">"Навчальні матеріали, які Еміль створив для нашої команди, були першокласними. Вони були вичерпними, актуальними та подані у захоплюючій формі. Наші знання у сфері комплаєнсу значно покращилися."</p>
+                                <div class="mt-6 text-center">
+                                    <p class="font-bold text-gray-900">Давид П.</p>
+                                    <p class="text-sm text-gray-500">Засновник сервісу крипто-гаманців</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Робота з Емілем була чудовим досвідом. Він швидко зрозумів специфіку нашого бізнесу і надав всю необхідну AML-документацію, адаптовану до естонських регуляцій. З його підтримкою ми успішно отримали ліцензію VASP."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Мартін Л.</p>
-                            <p class="text-sm text-gray-500">CEO фінтех-стартапу</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Ми найняли Еміля для розробки наших політик KYC/AML та підготовки до аудиту. Результати перевершили наші очікування — точно, професійно та повністю відповідно до останніх вимог ЄС. Дуже рекомендуємо як надійного експерта з комплаєнсу."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Карлос М.</p>
-                            <p class="text-sm text-gray-500">COO фінтех-компанії</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Поради Еміля щодо впровадження моніторингу транзакцій були неоціненними. Його практичний підхід і чіткі пояснення зробили складну тему легкою для розуміння та ефективного впровадження нашою командою."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Джессіка С.</p>
-                            <p class="text-sm text-gray-500">AML-офіцер</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"Навчальні матеріали, які Еміль створив для нашої команди, були першокласними. Вони були вичерпними, актуальними та подані у захоплюючій формі. Наші знання у сфері комплаєнсу значно покращилися."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Давид П.</p>
-                            <p class="text-sm text-gray-500">Засновник сервісу крипто-гаманців</p>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate Testimonial Set for seamless loop -->
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                         <img src="https://placehold.co/80x80/e0e7ff/3730a3?text=AK" alt="Avatar for Amira K." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Глибокі знання в AML та комплаєнсі, пов'язаному з криптовалютами. Допоміг нам не тільки з документацією, але й надав відмінні поради щодо вибору комплаєнс-інструментів. Все було виконано вчасно та з видатною якістю."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Аміра К.</p>
-                            <p class="text-sm text-gray-500">Керівник відділу комплаєнсу</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/dbeafe/1e40af?text=ML" alt="Avatar for Martin L." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Робота з Емілем була чудовим досвідом. Він швидко зрозумів специфіку нашого бізнесу і надав всю необхідну AML-документацію, адаптовану до естонських регуляцій. З його підтримкою ми успішно отримали ліцензію VASP."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Мартін Л.</p>
-                            <p class="text-sm text-gray-500">CEO фінтех-стартапу</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/c7d2fe/4338ca?text=CM" alt="Avatar for Carlos M." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Ми найняли Еміля для розробки наших політик KYC/AML та підготовки до аудиту. Результати перевершили наші очікування — точно, професійно та повністю відповідно до останніх вимог ЄС. Дуже рекомендуємо як надійного експерта з комплаєнсу."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Карлос М.</p>
-                            <p class="text-sm text-gray-500">COO фінтех-компанії</p>
-                        </div>
-                    </div>
-                    <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/eef2ff/4f46e5?text=JS" alt="Avatar for Jessica S." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-blue-100">
-                        <p class="text-gray-600 flex-grow">"Поради Еміля щодо впровадження моніторингу транзакцій були неоціненними. Його практичний підхід і чіткі пояснення зробили складну тему легкою для розуміння та ефективного впровадження нашою командою."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Джессіка С.</p>
-                            <p class="text-sm text-gray-500">AML-офіцер</p>
-                        </div>
-                    </div>
-                     <div class="card p-8 text-left flex flex-col flex-shrink-0 w-80 md:w-96">
-                        <img src="https://placehold.co/80x80/e0f2fe/0891b2?text=DP" alt="Avatar for David P." class="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-4 border-cyan-100">
-                        <p class="text-gray-600 flex-grow">"Навчальні матеріали, які Еміль створив для нашої команди, були першокласними. Вони були вичерпними, актуальними та подані у захоплюючій формі. Наші знання у сфері комплаєнсу значно покращилися."</p>
-                        <div class="mt-6 text-center">
-                            <p class="font-bold text-gray-900">Давид П.</p>
-                            <p class="text-sm text-gray-500">Засновник сервісу крипто-гаманців</p>
-                        </div>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
@@ -520,6 +507,8 @@
         <!-- Content will be injected by JS -->
     </div>
 
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
         // Mobile menu toggle
@@ -570,6 +559,34 @@
         });
     </script>
     
+    <!-- Swiper Initialization -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        grabCursor: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      });
+    </script>
+
     <!-- NEW SCRIPT FOR LANGUAGE SUGGESTION -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
